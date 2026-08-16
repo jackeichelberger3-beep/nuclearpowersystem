@@ -1,19 +1,14 @@
-Phase2 Milestone B - Memory gates
+Phase2 Milestone C - EEPROM (started)
 
-This file documents the Milestone B changes pushed to branch phase2/wiring-memory.
+This branch (phase2/wiring-memory) now includes an implementation of EEPROM gates (8-bit and 16-bit) and UI inspector controls to manually read/write and persist a shared backing store via localStorage.
 
-What's included:
-- SR latch (SR)
-- Gated SR latch (GATED_SR) - responds when CLK/enable is asserted
-- D latch (DLATCH)
-- Logic Memory gate (MEMORY) with pins DATA, ENABLE, RESET; has a storage indicator and can optionally require "power" via meta flags
-- Inspector UI now displays interactive test-input toggles and allows toggling stored state for stateful gates
-- Templates updated with SR and D-latch demos
+What's new:
+- New gate types: EEPROM8, EEPROM16
+- EEPROM behavior: read/write by address, RESET, SET, SAVE (persist to localStorage if shared name provided)
+- Inspector UI provides controls for manual read/write and persisting to localStorage
+- Template: eeprom-demo (demo of writing a value and reading it back to an LED)
 
-How to test:
-- Checkout phase2/wiring-memory and open standalone/index.html
-- Use Templates -> SR Demo or D-Latch Demo or create gates and wire them
-- Use the inspector to toggle test inputs when no wire is connected
-- Use Run/Step to simulate; stateful gates persist state in their .meta.storage property
-
-Next: EEPROM (8-bit -> 16-bit) and grouping/presets
+Notes & next steps:
+- EEPROM storage size is 256 entries (address width = 8 bits). For larger address widths we can parameterize later.
+- Shared backing: use localStorage key 'eeprom_<sharedName>' when sharedName is set. Last-writer-wins policy is used.
+- Next: Grouping/presets and expanding EEPROM param options (address width, file import/export of contents), plus template library expansion.
