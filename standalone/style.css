@@ -1,0 +1,26 @@
+/* style.css - minimalist dark UI */
+:root{
+  --bg:#111316;--panel:#16181a;--muted:#8f9398;--accent:#6cf;--grid:#1e2226;--wire-off:#444;--wire-on:#6cf;
+  --gate-bg:#222426;--gate-border:#33353a;--gate-label:#dfe6ee
+}
+*{box-sizing:border-box;font-family:Inter,Segoe UI,Arial;margin:0}
+html,body,#app{height:100%}
+body{background:var(--bg);color:var(--muted);}
+#topbar{height:48px;background:linear-gradient(90deg,#0f1113,#131516);display:flex;align-items:center;justify-content:space-between;padding:0 12px;border-bottom:1px solid #0b0b0b}
+#title{color:#dfe6ee;font-weight:600}
+#controls button{margin-left:6px;background:#16181a;border:1px solid #222;padding:6px 10px;color:var(--muted);cursor:pointer}
+#app{display:flex;height:calc(100% - 48px)}
+#palette{width:180px;background:var(--panel);padding:12px;border-right:1px solid #0b0b0b}
+#palette h3{color:var(--muted);margin-bottom:8px}
+.tool{background:var(--gate-bg);border:1px solid var(--gate-border);padding:8px;margin-bottom:6px;color:var(--gate-label);cursor:grab;text-align:center}
+#inspector{width:240px;background:var(--panel);padding:12px;border-left:1px solid #0b0b0b}
+#canvas-wrap{flex:1;position:relative;overflow:hidden}
+#canvas{width:100%;height:100%;display:block;background:repeating-linear-gradient(0deg,var(--grid) 0 1px,transparent 1px 40px),repeating-linear-gradient(90deg,var(--grid) 0 1px,transparent 1px 40px)}
+.modal{position:fixed;left:0;top:0;right:0;bottom:0;display:none;align-items:center;justify-content:center}
+.modal .modal-content{background:#0f1113;padding:16px;border:1px solid #222}
+#minimap{position:absolute;right:8px;bottom:8px;width:200px;height:140px;background:#0b0c0d;border:1px solid #222}
+.gate{position:absolute;width:80px;height:48px;background:var(--gate-bg);border:1px solid var(--gate-border);display:flex;align-items:center;justify-content:center;color:var(--gate-label);font-weight:600;border-radius:4px}
+.port{width:10px;height:10px;border-radius:2px;background:#222;border:1px solid #111;position:absolute}
+.port.in{left:-6px}
+.port.out{right:-6px}
+.selected{outline:2px solid rgba(108,204,255,0.18)}
