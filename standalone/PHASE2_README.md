@@ -1,14 +1,21 @@
-Phase2 Milestone C - EEPROM (started)
+Phase2 Milestone D - Grouping & Counters
 
-This branch (phase2/wiring-memory) now includes an implementation of EEPROM gates (8-bit and 16-bit) and UI inspector controls to manually read/write and persist a shared backing store via localStorage.
+This commit adds grouping/preset support and several counter/shifter gates to the phase2/wiring-memory branch.
 
-What's new:
-- New gate types: EEPROM8, EEPROM16
-- EEPROM behavior: read/write by address, RESET, SET, SAVE (persist to localStorage if shared name provided)
-- Inspector UI provides controls for manual read/write and persisting to localStorage
-- Template: eeprom-demo (demo of writing a value and reading it back to an LED)
+New features implemented in this milestone:
+- Marquee selection (Ctrl + drag) to select multiple nodes.
+- Save Group as Preset: select nodes then click "Save Group as Preset" in the palette to store the selection as a reusable preset.
+  - Presets are stored in localStorage under key 'logic_presets' and appear under the Presets section in the palette.
+  - Click a preset to instantiate its contents on the canvas.
+- New gates: COUNTER4 (4-bit up/down counter), SHIFTER4 (4-bit shift register), SHIFTER8 (8-bit shift register).
+- Templates: Counters Demo (shows 4-bit counter and 4-bit shifter example).
 
-Notes & next steps:
-- EEPROM storage size is 256 entries (address width = 8 bits). For larger address widths we can parameterize later.
-- Shared backing: use localStorage key 'eeprom_<sharedName>' when sharedName is set. Last-writer-wins policy is used.
-- Next: Grouping/presets and expanding EEPROM param options (address width, file import/export of contents), plus template library expansion.
+How to test:
+- Checkout branch phase2/wiring-memory and open standalone/index.html
+- Use Ctrl + left-drag to marquee-select multiple nodes. Click "Save Group as Preset" to save.
+- Presets will show in the left palette; click to place them.
+- Add a COUNTER4 or SHIFTER4 from the palette and use the inspector to toggle inputs or wire buttons to them; Run/Step to simulate.
+
+Next suggestions:
+- Add a UI for multi-bit bus wiring and visual bundles in the canvas (makes connecting data buses easier).
+- Add more presets/examples using the new grouping feature.
