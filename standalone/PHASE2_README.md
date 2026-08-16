@@ -1,25 +1,19 @@
-# Phase 2 branch: phase2/wiring-memory
+Phase2 Milestone B - Memory gates
 
-This branch implements Milestone A (Phase 2):
-- Click-to-connect wiring (output -> input)
-- Temporary wire preview while connecting
-- Wire selection and deletion (Delete key)
-- Port hit-testing
-- Panning (middle mouse or Shift+drag) and zoom (mouse wheel)
+This file documents the Milestone B changes pushed to branch phase2/wiring-memory.
 
-Files changed:
-- standalone/app.js (major update)
-
-Next steps (after you review and test Milestone A):
-- Implement Memory gates (SR latch, gated SR, D latch, Logic Memory)
-- EEPROM (8-bit/16-bit)
-- Grouping/presets
+What's included:
+- SR latch (SR)
+- Gated SR latch (GATED_SR) - responds when CLK/enable is asserted
+- D latch (DLATCH)
+- Logic Memory gate (MEMORY) with pins DATA, ENABLE, RESET; has a storage indicator and can optionally require "power" via meta flags
+- Inspector UI now displays interactive test-input toggles and allows toggling stored state for stateful gates
+- Templates updated with SR and D-latch demos
 
 How to test:
-1. Checkout branch `phase2/wiring-memory`
-2. Open `standalone/index.html` in a browser
-3. Add gates from the palette, click an output port (right side) to start a wire, then click an input port (left side) to connect.
-4. Select a wire by clicking near it; press Delete to remove it.
-5. Pan with middle mouse button or Shift+drag. Zoom with mouse wheel.
+- Checkout phase2/wiring-memory and open standalone/index.html
+- Use Templates -> SR Demo or D-Latch Demo or create gates and wire them
+- Use the inspector to toggle test inputs when no wire is connected
+- Use Run/Step to simulate; stateful gates persist state in their .meta.storage property
 
-Once you confirm this behavior, I'll proceed to Milestone B.
+Next: EEPROM (8-bit -> 16-bit) and grouping/presets
